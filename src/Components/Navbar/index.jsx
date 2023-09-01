@@ -1,80 +1,19 @@
-import { NavLink } from "react-router-dom"
-
-const menu1 = [
-    {
-        to: '/',
-        text: 'Shopi',
-        className: 'font-semibold text-2xl'
-    },
-    {
-        to: '/',
-        text: 'All',
-        className: ''
-    },
-    {
-        to: '/clothes',
-        text: 'clothes',
-        className: ''
-    },
-    {
-        to: '/electronics',
-        text: 'electronics',
-        className: ''
-    },
-    {
-        to: '/furnitures',
-        text: 'furnitures',
-        className: ''
-    },
-    {
-        to: '/toys',
-        text: 'toys',
-        className: ''
-    },
-    {
-        to: '/others',
-        text: 'others',
-        className: ''
-    },
-]
-
-const menu2 = [
-    {
-        to: '/email',
-        text: 'santihanine@gmail.com',
-        className: 'text-black/60'
-    },
-    {
-        to: '/my-orders',
-        text: 'My orders',
-        className: ''
-    },
-    {
-        to: '/my-account',
-        text: 'My occount',
-        className: ''
-    },
-    {
-        to: '/signin',
-        text: 'Sign in',
-        className: ''
-    },
-    {
-        to: '/shoppcar',
-        text: '🛒',
-        className: ''
-    },
-]
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { ShoppingCartContext } from "../../Context";
+import { NavData } from "../../Assets/NavData";
 
 
 function Navbar() {
+    const context = useContext(ShoppingCartContext)
+    const NavItems = NavData(context)
     const activeStyle = 'underline underline-offset-4'
 
     return (
         <nav className="flex justify-between items-center p-5 fixed top-0 z-10 w-full font-light">
             <ul className="flex gap-5 items-center">
-                {menu1.map(link => (
-                <li className={link.classNamey}
+                {NavItems.menuLeft.map(link => (
+                <li className={link.className}
                     key={link.text}
                 >
                     <NavLink 
@@ -87,16 +26,19 @@ function Navbar() {
             </ul>
 
             <ul className="flex gap-5 items-center">
-            {menu2.map(link => (
+            {NavItems.asideMenu.map(link => (
                 <li
                     key={link.text}
                     >
                         <NavLink 
                         to={link.to}
-                        className={({isActive}) => isActive ? activeStyle : undefined }>
-                            {link.text}
+                        className='${link.icon ?? flex items-center justify-center gap-1 : undefined} ${({isActive}) => isActive ? activeStyle : undefined }'>
+                        {link.icon ?? link.icon}
+                        {link.text}
                         </NavLink>
+
                 </li>
+                
                 ))}
             </ul>
         </nav>
