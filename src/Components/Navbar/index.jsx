@@ -45,12 +45,12 @@ const menu2 = [
         className: 'text-black/60'
     },
     {
-        to: '/myorders',
+        to: '/my-orders',
         text: 'My orders',
         className: ''
     },
     {
-        to: '/myoccount',
+        to: '/my-account',
         text: 'My occount',
         className: ''
     },
@@ -71,7 +71,7 @@ function Navbar() {
     const activeStyle = 'underline underline-offset-4'
 
     return (
-        <nav className="flex justify-between items-center p-5 fixed z-10 w-full font-light">
+        <nav className="flex justify-between items-center p-5 fixed top-0 z-10 w-full font-light">
             <ul className="flex gap-5 items-center">
                 {menu1.map(link => (
                 <li className={link.classNamey}
