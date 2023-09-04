@@ -11,16 +11,23 @@ const Card = ({data}) => {
         count,
         cartProducts,
         setCartProducts,
+        openCheckoutSideMenu,
+        closeCheckoutSideMenu,
+        closeProductDetail,
     } = useContext(ShoppingCartContext)
 
     const showProduct = (productDetail) => {
         openProductDetail()
         setShowProduct(productDetail)
+        closeCheckoutSideMenu()
     }
 
-    const addProductsToCart = (productData) => {
+    const addProductsToCart = (e, productData) => {
+        e.stopPropagation()
         setCount(count + 1)
         setCartProducts( [...cartProducts, productData])
+        openCheckoutSideMenu()
+        closeProductDetail()
         console.log(cartProducts)
     }
     
@@ -32,7 +39,7 @@ const Card = ({data}) => {
                 <span className="absolute bottom-0 left-0 bg-white/80 rounded-lg text-black text-xs m-2 px-3 py-0.5 uppercase">{data?.category}</span>
                 <img className="w-full h-full object-cover rounded-lg" src={data?.image} alt={data?.title} />
                 <button className="absolute top-0 right-0 flex justify-center items-center bg-white w-6 h-6 rounded-full m-2 p-1"
-                        onClick={() => addProductsToCart(data) }
+                        onClick={(e) => addProductsToCart(e, data) }
                 >
                     <PlusIcon className='h-6 w-6 text-black'> </PlusIcon>
                 </button>
