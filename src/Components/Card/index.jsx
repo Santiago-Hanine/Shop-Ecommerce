@@ -4,6 +4,7 @@ import { ShoppingCartContext } from '../../Context';
 
 
 const Card = ({data}) => {
+    
     const {
         openProductDetail,
         setShowProduct,
@@ -28,7 +29,6 @@ const Card = ({data}) => {
         setCartProducts( [...cartProducts, productData])
         openCheckoutSideMenu()
         closeProductDetail()
-        console.log(cartProducts)
     }
     
     return (
