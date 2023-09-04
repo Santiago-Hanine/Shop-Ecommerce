@@ -23,7 +23,7 @@ function Home() {
   return (
     <Layout >
         Home 
-        <div className="grid grid-cols-4 gap-x-12 gap-y-24 w-full max-w-screen-lg">
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 place-items-center grid-cols-1 gap-x-12 gap-y-24 w-full max-w-screen-lg">
           {
             items?.map(item => (
               <Card 
