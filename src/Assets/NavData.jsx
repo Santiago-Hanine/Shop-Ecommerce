@@ -1,43 +1,51 @@
 import { ShoppingBagIcon } from '@heroicons/react/24/solid'
+import { useContext } from 'react';
+import { ShoppingCartContext } from '../Context';
 
-function NavData(prop) {
+
+
+function NavData() {
+    
+    const {
+        cartProducts
+    } = useContext(ShoppingCartContext);
 
     const menuLeft = [
         {
             to: '/',
-            text: 'Shopi',
+            title: 'Shopi',
             className: 'font-semibold text-lg'
         },
         {
             to: '/',
-            text: 'All',
+            title: 'All',
             className: ''
         },
         {
-            to: '/clothes',
-            text: 'clothes',
+            to: '/men-clothing',
+            title: "men's clothing",
+            text: "men's clothing",
             className: '' 
         },
         {
             to: '/electronics',
+            title: 'electronics',
             text: 'electronics',
             className: ''
         },
         {
-            to: '/furnitures',
-            text: 'furnitures',
+            to: "/women-clothing",
+            title: "women's clothing",
+            text: "women's clothing",
             className: ''
         },
         {
-            to: '/toys',
-            text: 'toys',
+            to: '/jewelery',
+            title: 'jewelery',
+            text: 'jewelery',
             className: ''
         },
-        {
-            to: '/others',
-            text: 'others',
-            className: ''
-        },
+
     ];
     
     const asideMenu = [
@@ -63,7 +71,7 @@ function NavData(prop) {
         },
         {
             to: '/shoppcar',
-            text: `${prop.count}`,
+            text: `${cartProducts.length}`,
             className: '',
             icon: <ShoppingBagIcon className='h-6 w-6 text-black'/>
         },

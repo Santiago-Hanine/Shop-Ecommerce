@@ -1,37 +1,47 @@
-import { useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Card } from "../../Components/Card";
 import { Layout } from "../../Components/Layout";
 import { ProductDetail } from "../../Components/ProductDetail";
-import { apiUrl } from "../../Api";
+import { ShoppingCartContext } from "../../Context";
 
 function Home() {
-  const [items, setItems] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${apiUrl}/products`)
-        const data = await response.json()
-        setItems(data)
-      } catch (error) {
-        console.error(`oh no, there was an error ${error}`)
-      }
+  const {
+    setSearchByTitle,
+    filteredItems,
+  } = useContext(ShoppingCartContext)
+
+
+
+  const renderView =  () => {
+    if (filteredItems?.length > 0) {
+      return (
+        filteredItems?.map(item => (
+          <Card key={item.id} data={item} />
+        ))
+      )
+    } else if (!!filteredItems) {
+      return  (
+        <div>We don't have anything :</div>
+      )
     }
-      fetchData()
-  },[])
+  }
 
   return (
     <Layout >
-        Home 
+        <div className="flex items-center justify-center relative w-80 mb-4">
+          <h1 className="font-medium text-xl">Exclusive Products</h1>
+        </div>
+
+        <input 
+        className="rounded-lg border border-black focus:outline-none w-80 p-4 mb-6"
+        type="text" 
+        placeholder="Search a product" 
+        onChange={(e) => setSearchByTitle(e.target.value)}
+        />
+
         <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 place-items-center grid-cols-1 gap-x-12 gap-y-24 w-full max-w-screen-lg">
-          {
-            items?.map(item => (
-              <Card 
-              key={item.id}
-              data={item}
-              />
-            ))
-          }
+          {renderView()}
         </div>
         <ProductDetail />
    </Layout >

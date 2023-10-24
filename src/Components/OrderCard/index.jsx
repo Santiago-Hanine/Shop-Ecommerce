@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
 const OrderCard = props => {
@@ -6,66 +5,36 @@ const OrderCard = props => {
         id,
         title,
         imageUrl,
-        price
+        price,
+        handleDelete,
     } = props
-
-const [quantity, setQuantity] = useState(1);
-const [total, setTotal] = useState(price);
-
-const addQuantity = () => {
-    const newQuantity = quantity + 1;
-    setQuantity(newQuantity);
-    setTotal(price * newQuantity );
-}
-
-const substractQuantity = () => {
-    const newQuantity = quantity - 1;
-    setQuantity(newQuantity);
-    setTotal(price * newQuantity);
-
-
-}
-
+    
     return (
-        <div className="flex justify-between items-center mb-2">
-            <div className='flex items-center gap-2'>
-                <figure className='w-20 h-20'>
-                    <img className='w-full h-full rounded-lg object-cover' src={imageUrl} alt={title} />
+
+            <div className='flex items-center justify-between gap-2'>
+                <figure className=' w-28'>
+                    <img className='w-full rounded-lg object-cover' src={imageUrl} alt={title} />
                 </figure>
 
-                <div className='flex flex-col  '>
+                <div className='flex flex-col w-full'>
                     <p className='text-sm font-light '>
                         {title}
-                    </p>
-
-                    <div className='flex p-2'>
-                        <button 
-                        className='border px-2 flex items-center hover:bg-gray-200'
-                        onClick={() => substractQuantity()}>
-                        -
-                        </button>
-                        <p className='bg-gray-200 border px-2'>
-                            {quantity}
-                        </p>
-                        <button
-                        className='border px-2 flex items-center hover:bg-gray-200'
-                        onClick={() => addQuantity({id})}>
-                            +
-                        </button>
-                    </div>         
-                            
+                    </p>         
                 </div>
+                <div className='flex items-center gap-2'>
+                    <p className='text-lg font-medium w-full'>
+                        ${price}
+                    </p>
+                    {handleDelete &&
+                    <XMarkIcon 
+                    onClick={() => handleDelete(id)}
+                        className='h-6 w-6 text-black cursor-pointer'> 
+                    </XMarkIcon>
+                    }
+                </div> 
             </div>
 
-            <div className='flex items-center gap-2'>
-                <p className='text-lg font-medium w-full'>
-                    ${total}
-                </p>
-                <XMarkIcon 
-                    className='h-6 w-6 text-black cursor-pointer'> 
-                </XMarkIcon>
-            </div>
-        </div>
+
     )
 }
 

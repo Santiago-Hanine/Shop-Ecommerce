@@ -6,12 +6,14 @@ const ProductDetail = () => {
     const {
         isProductDetailOpen,
         showProduct,
-        closeProductDetail
+        closeProductDetail,
+        isCheckoutSideMenuOpen,
+        closeCheckoutSideMenu,
     } = useContext(ShoppingCartContext);
 
     return (
         <aside 
-                className={`${isProductDetailOpen ? 'flex' : 'hidden'}  flex-col fixed right-0 top-[68px] border bg-white border-black rounded-lg lg:w-[360px] h-[calc(100vh-80px)]`}>
+                className={`${isProductDetailOpen ? 'flex' : 'hidden'}  flex-col fixed right-5  bottom-[50px] border bg-white border-black rounded-lg lg:w-[360px] h-[50vh]`}>
             <div className='flex justify-between items-center p-6'>
                 <h2 className="font-medium text-xl">
                     Detail
@@ -22,7 +24,7 @@ const ProductDetail = () => {
                 </div>
             </div>
 
-            <figure className='px-6'>
+            <figure className='px-6 h-1/2'>
                 <img
                  className='w-full h-full rounded-lg'
                  src={showProduct.image}

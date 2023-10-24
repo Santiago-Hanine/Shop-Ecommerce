@@ -14,12 +14,14 @@ function Navbar() {
             <ul className="flex gap-5 items-center">
                 {NavItems.menuLeft.map(link => (
                 <li className={link.className}
-                    key={link.text}
+                    key={link.title}
                 >
                     <NavLink 
                     to={link.to}
-                    className={({isActive}) => isActive ? activeStyle : undefined }>
-                        {link.text}
+                    className={({isActive}) => isActive ? activeStyle : undefined }
+                    onClick={()=> context.setSearchByCategory(link?.text)}
+                    >
+                        {link.title}
                     </NavLink>
                 </li>
                 ))}
