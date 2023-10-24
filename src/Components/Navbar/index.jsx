@@ -11,7 +11,7 @@ function Navbar() {
 
     return (
         <nav className="flex justify-between items-center p-5 fixed top-0 z-10 w-full font-light">
-            <ul className="flex gap-5 items-center">
+            <ul className="lg:flex  gap-5 items-center">
                 {NavItems.menuLeft.map(link => (
                 <li className={link.className}
                     key={link.title}
@@ -27,7 +27,7 @@ function Navbar() {
                 ))}
             </ul>
 
-            <ul className="flex gap-5 items-center">
+            <ul className="lg:flex gap-5 items-center">
             {NavItems.asideMenu.map(link => (
                 <li
                     key={link.text}
