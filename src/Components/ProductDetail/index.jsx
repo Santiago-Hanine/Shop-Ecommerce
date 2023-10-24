@@ -13,7 +13,7 @@ const ProductDetail = () => {
 
     return (
         <aside 
-                className={`${isProductDetailOpen ? 'flex' : 'hidden'}  flex-col fixed right-5  bottom-[50px] border bg-white border-black rounded-lg lg:w-[360px] h-[50vh]`}>
+                className={`${isProductDetailOpen ? 'flex' : 'hidden'}  flex-col fixed right-5 lg:bottom-[50px] border bg-white border-black rounded-lg lg:w-[360px] lg:h-[50vh]`}>
             <div className='flex justify-between items-center p-6'>
                 <h2 className="font-medium text-xl">
                     Detail
@@ -24,7 +24,7 @@ const ProductDetail = () => {
                 </div>
             </div>
 
-            <figure className='px-6 h-1/2'>
+            <figure className='px-6 lg:w-full w-1/2 m-auto'>
                 <img
                  className='w-full h-full rounded-lg'
                  src={showProduct.image}

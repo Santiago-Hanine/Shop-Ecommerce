@@ -32,7 +32,7 @@ const handleCheckout = () => {
     
     return (
         <aside 
-                className={`transform ${isCheckoutSideMenuOpen ? 'flex translate-x-0' : 'hidden -translate-x-full ' } flex-col fixed lg:right-5 lg:top-[100px] bottom-0 border bg-white border-black rounded-lg lg:w-[360px] lg:h-[35vh] h-[15vh] w-full right-0 transition-transform duration-300 ease-in-out`}>
+                className={`transform ${isCheckoutSideMenuOpen ? 'flex' : 'hidden' } flex-col fixed right-5 lg:top-[100px] border bg-white border-black rounded-lg lg:w-[360px] lg:h-[35vh] h-[25vh] w-full`}>
             <div className='flex justify-between items-center p-6'>
                 <h2 className="font-medium text-xl">
                     My Order
